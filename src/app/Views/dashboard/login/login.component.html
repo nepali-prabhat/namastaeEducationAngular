@@ -1,0 +1,32 @@
+<div class='login'>
+    <mat-card class='login-form'>
+        <h1> Log In </h1>
+        <form [formGroup]='loginForm' (ngSubmit)='onSubmit()' >
+            <mat-form-field class='login-full-width'>
+                <mat-label><mat-icon>supervised_user_circle</mat-icon> username</mat-label>
+                <input matInput type='text' formControlName='username' required>
+                <mat-error *ngIf='username.invalid' class='error'>Username is required.</mat-error>
+            </mat-form-field>
+                <div *ngIf='errors'>
+                    <div *ngFor='let error of errors' class='error'>
+                         <span *ngIf="error.location==='username'">{{error.msg}}</span>
+                    </div>
+                </div>
+            <mat-form-field class='login-full-width'>
+                <mat-label><mat-icon>security</mat-icon> password</mat-label>
+                <input matInput type='{{visibility? "text":"password"}}' formControlName='password' required>
+                <mat-icon matSuffix (click)='toggleVisibility()'>{{visibility? "visibility_off":"visibility"}}</mat-icon>
+                <mat-error *ngIf='username.invalid' class='error'>Username is required.</mat-error>
+            </mat-form-field>
+                <div *ngIf='errors'>
+                    <div *ngFor='let error of errors' class='error'>
+                            <span *ngIf="error.location==='password'">{{error.msg}}</span>
+                    </div>
+                </div>
+            <div class='submit'>
+                <button type='button' *ngIf='!environment' mat-raised-button (click)='makeDefault()'> Default login </button>
+                <button mat-raised-button type='submit' [disabled]='!loginForm.valid' >Log In</button>
+            </div> 
+        </form>
+    </mat-card>
+</div>

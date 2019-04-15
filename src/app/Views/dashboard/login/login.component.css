@@ -1,0 +1,35 @@
+.login{
+    width:100%;
+    height:100vh;
+    display:grid;
+    justify-content:center; 
+    align-items: center;
+    background: #2c2c2b;
+    font-family: 'Poiret One', cursive;
+}
+.login-form{
+    width:400px;
+}
+.login-form h1{
+    margin:30px 0;
+    color:#291d41;
+    text-decoration-line: underline; 
+}
+.login-full-width{
+    width:100%;
+    margin: 1px 0;
+}
+.submit{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.error{
+    color: white;
+}
+.error{
+    color: red;
+}
