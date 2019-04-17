@@ -20,7 +20,7 @@ export class LoginStateService {
   get _authToken():string{
     return this.authToken
   }
-
+  
   logIn(authToken:string, id:number){
     this.loggedIn = true
     this.authToken = authToken
