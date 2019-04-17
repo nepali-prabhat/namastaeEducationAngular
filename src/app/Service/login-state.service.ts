@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginStateService {
-  private loggedIn:boolean = (JSON.parse(localStorage.getItem('loggedIn')) || false)
-  private id:number = ( JSON.parse(localStorage.getItem('id')) || null)
-  private authToken:string = ( localStorage.getItem('authToken') || null)
+  private loggedIn:boolean = JSON.parse(localStorage.getItem('loggedIn')) || false
+  private id:number = parseInt(localStorage.getItem('id')) || null
+  private authToken:string = localStorage.getItem('authToken') || null
   redirectUrl:string
-  constructor() { }
+  constructor(private router:Router) { }
 
   get _loggedIn():boolean{
     return this.loggedIn
@@ -29,9 +30,10 @@ export class LoginStateService {
     localStorage.setItem('authToken', authToken)
   }
   logOut(){
-    localStorage.clear()
     this.loggedIn = false
     this.id = null
     this.authToken = null
+    localStorage.clear()
+    this.router.navigate(['/dashboard/logIn'])
   }
 }
